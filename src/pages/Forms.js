@@ -10,7 +10,6 @@ const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 function Forms() {
 
-
     const [forms, setForms] = useState(null);
     const [loading, setLoading] = useState(true);
     const [formId, setFormId] = useState(null);
@@ -212,11 +211,15 @@ function Forms() {
                                             </PDFDownloadLink>
                                         </div>
                                     </li>
-                                ))}
+                                ))
+                            }
                         </ul>
-                    ) : (
-                        <p>Forms data is not available or is not in the expected format.</p>
-                    )}
+                    )
+                    :
+                    (
+                        <p className='p-8 my-8 text-center'>Not Found!</p>
+                    )
+            }
         </div>
     );
 }
