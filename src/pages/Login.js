@@ -7,6 +7,8 @@ import axios from "axios";
 import { setUserToken } from "../slices/authSlice";
 import { setUser } from "../slices/profileSlice";
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 
 const Login = () => {
 
@@ -53,7 +55,7 @@ const Login = () => {
 
             setLoading(true); // Start loading
 
-            const response = await axios.post('http://localhost:8000/login', {
+            const response = await axios.post(`${BASE_URL}/login`, {
                 email,
                 password,
             });
@@ -72,7 +74,7 @@ const Login = () => {
             localStorage.setItem('token', JSON.stringify(response.data.token));
             localStorage.setItem('user', JSON.stringify({ ...response.data.user }));
 
-            navigate(`/profile`);
+            navigate(`/ profile`);
 
         } catch (error) {
 

@@ -6,6 +6,8 @@ import axios from 'axios';
 import Edit from './Edit';
 import { Document, Page, Text, View, StyleSheet, PDFDownloadLink } from '@react-pdf/renderer';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Forms() {
 
 
@@ -26,7 +28,7 @@ function Forms() {
 
             try {
 
-                const response = await axios.get('http://localhost:8000/forms');
+                const response = await axios.get(`${BASE_URL}/forms`);
 
                 if (!response.data.success) {
 

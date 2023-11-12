@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Document, Page, Text, View, StyleSheet, PDFDownloadLink } from '@react-pdf/renderer';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function getInitials(firstName, lastName) {
 
     const firstInitial = firstName ? firstName.charAt(0) : '';
@@ -27,7 +29,7 @@ function Profile() {
 
             setFetchingDetails(true);
 
-            const response = await axios.get(`http://localhost:8000/details/${email}`);
+            const response = await axios.get(`${BASE_URL}/details/${email}`);
 
             if (response.data && response.data.success) {
 

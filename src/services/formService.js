@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 export function saveFormData(formData, navigate) {
 
     return async (dispatch) => {
@@ -7,7 +9,7 @@ export function saveFormData(formData, navigate) {
         try {
             console.log("MY DATA: ", formData.venue);
 
-            const response = await axios.post('http://localhost:8000/form', { formData: formData });
+            const response = await axios.post(`${BASE_URL}/form`, { formData: formData });
 
             console.log("saveFormData API response: ", response.data);
 

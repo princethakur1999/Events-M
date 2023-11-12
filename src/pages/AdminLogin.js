@@ -6,6 +6,8 @@ import { useDispatch } from 'react-redux';
 
 import { setAdminToken } from '../slices/adminSlice';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 
 const AdminLogin = () => {
 
@@ -24,7 +26,7 @@ const AdminLogin = () => {
 
         try {
 
-            const response = await axios.post(`http://localhost:8000/admin-login?pin=${pin}`);
+            const response = await axios.post(`${BASE_URL}/admin-login?pin=${pin}`);
 
 
             console.log('Response:', response.data);

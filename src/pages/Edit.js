@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+const BASE_URL = process.env.REACT_APP_BASE_URL;
+
 function Edit({ formId }) {
 
     const [eventData, setEventData] = useState(null);
@@ -12,7 +14,7 @@ function Edit({ formId }) {
 
         try {
 
-            const response = await axios.get(`http://localhost:8000/edit/${formId}`);
+            const response = await axios.get(`${BASE_URL}/edit/${formId}`);
 
             if (response.data && response.data.success) {
 
@@ -51,13 +53,13 @@ function Edit({ formId }) {
 
         try {
 
-            const response = await axios.put(`http://localhost:8000/update/${formId}`, eventData);
+            const response = await axios.put(`${BASE_URL}/update/${formId}`, eventData);
 
             if (response.data && response.data.success) {
 
                 alert("Form updated successfully.")
 
-                const emailResponse = await axios.get(`http://localhost:8000/sendemail/${formId}`);
+                const emailResponse = await axios.get(`${BASE_URL}/sendemail/${formId}`);
 
                 if (emailResponse.data && emailResponse.data.success) {
 
