@@ -14,7 +14,7 @@ function Edit({ formId }) {
 
         try {
 
-            const response = await axios.get(`http://localhost:8000/edit/${formId}`);
+            const response = await axios.get(`https://ssu-iqac-backend.onrender.com/edit/${formId}`);
 
             if (response.data && response.data.success) {
 

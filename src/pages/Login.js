@@ -55,7 +55,7 @@ const Login = () => {
 
             setLoading(true); // Start loading
 
-            const response = await axios.post(`http://localhost:8000/login`, {
+            const response = await axios.post(`https://ssu-iqac-backend.onrender.com/login`, {
                 email,
                 password,
             });

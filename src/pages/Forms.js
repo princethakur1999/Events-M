@@ -28,7 +28,7 @@ function Forms() {
 
             try {
 
-                const response = await axios.get(`${BASE_URL}/forms`);
+                const response = await axios.get(`https://ssu-iqac-backend.onrender.com/forms`);
 
                 if (!response.data.success) {
 

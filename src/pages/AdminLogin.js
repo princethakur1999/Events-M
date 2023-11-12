@@ -28,7 +28,7 @@ const AdminLogin = () => {
 
         try {
 
-            const response = await axios.post(`http://localhost:8000/admin-login?pin=${pin}`);
+            const response = await axios.post(`https://ssu-iqac-backend.onrender.com/admin-login?pin=${pin}`);
 
             console.log('Response:', response.data);
 
@@ -39,11 +39,15 @@ const AdminLogin = () => {
 
             dispatch(setAdminToken(response.data.token));
 
+
             localStorage.setItem('adminToken', response.data.token);
+
 
             alert('Welcome to Admin Dashboard');
 
+
             navigate('/dashboard');
+
 
         } catch (error) {
 

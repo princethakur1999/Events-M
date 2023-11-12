@@ -29,7 +29,7 @@ function Profile() {
 
             setFetchingDetails(true);
 
-            const response = await axios.get(`${BASE_URL}/details/${email}`);
+            const response = await axios.get(`https://ssu-iqac-backend.onrender.com/details/${email}`);
 
             if (response.data && response.data.success) {
 
