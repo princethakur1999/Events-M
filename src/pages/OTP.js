@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { sendOtp, signUp } from '../services/authService';
 
-
 const OTP = () => {
 
     const [otp, setOtp] = useState('');

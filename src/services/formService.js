@@ -9,7 +9,7 @@ export function saveFormData(formData, navigate) {
         try {
             console.log("MY DATA: ", formData.venue);
 
-            const response = await axios.post(`${BASE_URL}/form`, { formData: formData });
+            const response = await axios.post(`http://localhost:8000/form`, { formData: formData });
 
             console.log("saveFormData API response: ", response.data);
 

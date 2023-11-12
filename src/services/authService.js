@@ -8,7 +8,7 @@ export function sendOtp(email, navigate) {
 
         try {
 
-            const response = await axios.post(`${BASE_URL}/sendOTP`, {
+            const response = await axios.post(`http://localhost:8000/sendOTP`, {
 
                 email
             });
@@ -41,7 +41,7 @@ export function signUp(firstName, lastName, email, password, confirmPassword, ot
 
         try {
 
-            const response = await axios.post(`${BASE_URL}/signup`, signupData);
+            const response = await axios.post(`http://localhost:8000/signup`, signupData);
 
             console.log('Signup successful:', response.data);
 

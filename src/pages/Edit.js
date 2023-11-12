@@ -14,7 +14,7 @@ function Edit({ formId }) {
 
         try {
 
-            const response = await axios.get(`${BASE_URL}/edit/${formId}`);
+            const response = await axios.get(`http://localhost:8000/edit/${formId}`);
 
             if (response.data && response.data.success) {
 

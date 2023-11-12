@@ -55,7 +55,7 @@ const Login = () => {
 
             setLoading(true); // Start loading
 
-            const response = await axios.post(`${BASE_URL}/login`, {
+            const response = await axios.post(`http://localhost:8000/login`, {
                 email,
                 password,
             });
@@ -74,7 +74,7 @@ const Login = () => {
             localStorage.setItem('token', JSON.stringify(response.data.token));
             localStorage.setItem('user', JSON.stringify({ ...response.data.user }));
 
-            navigate(`/ profile`);
+            navigate(`/profile`);
 
         } catch (error) {
 
