@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.active {
+    border: 1px solid white;
+    border-radius: 1rem;
+}
