@@ -8,7 +8,7 @@ export function sendOtp(email, navigate) {
 
         try {
 
-            const response = await axios.post(`https://ssu-iqac-backend.onrender.com/sendOTP`, {
+            const response = await axios.post(`http://localhost:8000/sendOTP`, {
 
                 email
             });
@@ -41,7 +41,7 @@ export function signUp(firstName, lastName, email, password, confirmPassword, ot
 
         try {
 
-            const response = await axios.post(`https://ssu-iqac-backend.onrender.com/signup`, signupData);
+            const response = await axios.post(`http://localhost:8000/signup`, signupData);
 
             console.log('Signup successful:', response.data);
 

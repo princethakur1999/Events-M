@@ -43,9 +43,6 @@ const FormSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    benefitToSSU: {
-        type: Boolean,
-    },
     benefitDetails: {
         type: String,
     },

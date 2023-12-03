@@ -14,7 +14,6 @@ function getInitials(firstName, lastName) {
 
 function Profile() {
 
-
     const [clicked, setClicked] = useState(false);
     const [eventDetails, setEventDetails] = useState(null);
     const [fetchingDetails, setFetchingDetails] = useState(false);
@@ -29,7 +28,7 @@ function Profile() {
 
             setFetchingDetails(true);
 
-            const response = await axios.get(`https://ssu-iqac-backend.onrender.com/details/${email}`);
+            const response = await axios.get(`http://localhost:8000/details/${email}`);
 
             if (response.data && response.data.success) {
 
@@ -63,7 +62,7 @@ function Profile() {
 
                     <View style={styles.section}>
 
-                        <Text style={styles.header}>IQAC Event Details</Text>
+                        <Text style={styles.header}>IQAC Event Form</Text>
                         {
                             eventDetails &&
                             Object.entries(eventDetails).map(([key, value]) => {
@@ -74,7 +73,7 @@ function Profile() {
 
                                         <View key={key} style={styles.detail}>
 
-                                            <Text style={styles.label}>{key.charAt(0).toUpperCase() + key.slice(1)} :</Text>
+                                            <Text style={styles.label}>{key.charAt(0).toUpperCase() + key.slice(1).replace(/([a-z])([A-Z])/g, '$1 $2')}</Text>
                                             <Text style={styles.value}>
                                                 {
                                                     ['eventDate', 'dateOfRequest'].includes(key) && value ? new Date(value).toLocaleDateString() : value
@@ -125,27 +124,34 @@ function Profile() {
             color: 'white',
             paddingVertical: 20,
             marginBottom: 30,
+            fontWeight: 700,
         },
         detail: {
             flexDirection: 'row',
             justifyContent: 'space-between',
             color: '#881337',
             padding: 5,
-            marginBottom: 15,
+            marginBottom: 10,
         },
         label: {
             fontSize: 12,
+            backgroundColor: '#881337',
+            color: 'white',
+            width: '25%',
+            padding: 5,
+
         },
         value: {
-            marginLeft: 10,
             fontSize: 12,
             borderBottom: '1px dotted #881337',
-            width: '40%',
-            paddingLeft: 10,
+            width: '50%',
+            paddingLeft: 5,
         },
     });
 
+
     return (
+
         <div className="container mx-auto mt-10">
 
             <div className="bg-white p-8 shadow-md rounded-lg">
@@ -154,7 +160,7 @@ function Profile() {
                         (
                             user ?
                                 (
-                                    <div>
+                                    <div className='flex flex-col gap-8'>
 
                                         <h1 className="text-3xl font-semibold mb-4">User Profile</h1>
 
@@ -164,32 +170,33 @@ function Profile() {
                                             </div>
                                         </div>
 
-                                        <div className="flex justify-between mb-4">
-                                            <span className="font-semibold">First Name:</span>
+                                        <div className="flex flex-col sm:flex-row justify-between">
+                                            <span className="font-bold">First Name</span>
                                             <span>{user.firstName}</span>
                                         </div>
 
-                                        <div className="flex justify-between mb-4">
-                                            <span className="font-semibold">Last Name:</span>
+                                        <div className="flex flex-col sm:flex-row justify-between">
+                                            <span className="font-bold">Last Name</span>
                                             <span>{user.lastName}</span>
                                         </div>
 
-                                        <div className="flex justify-between mb-4">
-                                            <span className="font-semibold">Email:</span>
+                                        <div className="flex flex-col sm:flex-row justify-between">
+                                            <span className="font-bold">Email</span>
                                             <span>{user.email}</span>
                                         </div>
 
                                         {
                                             !clicked &&
                                             (
-                                                <button onClick={fetchDetails} className="bg-rose-900 text-white px-4 py-2 rounded">
+                                                <button onClick={fetchDetails} className="bg-rose-900 w-[200px] text-white px-4 py-2 rounded">
                                                     View Event Details
                                                 </button>
                                             )
                                         }
 
                                         {
-                                            fetchingDetails && <p className='bg-rose-900 text-xl font-semibold p-4 mb-8 text-center text-white'>Loading...</p>
+                                            fetchingDetails &&
+                                            <p className='text-xl font-semibold p-4 mb-8 text-center text-black'>Loading...</p>
                                         }
 
                                         {
@@ -204,7 +211,7 @@ function Profile() {
                                                         {
                                                             Object.entries(eventDetails).map(([key, value]) => {
 
-                                                                if (key === '_id' || key === '__v') {
+                                                                if (key === '_id' || key === '__v' || key === 'createdAt' || key === 'remarks') {
 
                                                                     return null;
                                                                 }
@@ -212,12 +219,18 @@ function Profile() {
 
                                                                     <div key={key} className="text-black w-full my-4 px-4 sm:px-20 border-b">
 
-                                                                        <p className="mb-2 sm:mb-0 text-sm sm:text-base">
-                                                                            <span>{key.charAt(0).toUpperCase() + key.slice(1)}</span>
-                                                                            <span className="float-right sm:ml-4">{value}</span>
-                                                                        </p>
+                                                                        <div className="mb-2 sm:mb-0 text-sm sm:text-base flex flex-col sm:flex-row justify-between">
 
+                                                                            <p className="w-full sm:w-auto mb-2 sm:mb-0 sm:mr-4 font-bold">
+                                                                                {key.charAt(0).toUpperCase() + key.slice(1).replace(/([a-z])([A-Z])/g, '$1 $2')}
+                                                                            </p>
+
+                                                                            <p className="text-left sm:text-right">
+                                                                                {['eventDate', 'dateOfRequest'].includes(key) && value ? new Date(value).toLocaleDateString() : value}
+                                                                            </p>
+                                                                        </div>
                                                                     </div>
+
                                                                 );
                                                             })
                                                         }
@@ -252,7 +265,7 @@ function Profile() {
                         )
                 }
             </div>
-        </div>
+        </div >
     );
 }
 

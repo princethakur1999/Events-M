@@ -28,7 +28,7 @@ const AdminLogin = () => {
 
         try {
 
-            const response = await axios.post(`https://ssu-iqac-backend.onrender.com/admin-login?pin=${pin}`);
+            const response = await axios.post(`http://localhost:8000/admin-login?pin=${pin}`);
 
             console.log('Response:', response.data);
 

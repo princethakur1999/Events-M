@@ -9,6 +9,7 @@ const Form = () => {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
+
         eventName: '',
         category: '',
         objectives: '',
@@ -19,7 +20,6 @@ const Form = () => {
         keyAttendees: '',
         totalAttendees: 0,
         dateOfRequest: '',
-        benefitToSSU: false,
         benefitDetails: '',
         venue: '',
         budget: 0,
@@ -35,25 +35,13 @@ const Form = () => {
 
     const handleChange = (e) => {
 
-        const { name, value, type, checked } = e.target;
+        const { name, value } = e.target;
 
-        if (name === 'benefitToSSU') {
+        setFormData((prevData) => ({
 
-            setFormData((prevData) => ({
-
-                ...prevData,
-                benefitToSSU: checked,
-                benefitDetails: checked ? prevData.benefitDetails : '',
-
-            }));
-
-        } else {
-
-            setFormData((prevData) => ({
-                ...prevData,
-                [name]: value,
-            }));
-        }
+            ...prevData,
+            [name]: value,
+        }));
     };
 
     const handleSubmit = (e) => {
@@ -240,23 +228,10 @@ const Form = () => {
                 />
             </div>
 
-            {/* Benefit to SSU (Checkbox) */}
-            <div className="mb-4">
-                <label className="inline-flex items-center">
-                    <input
-                        type="checkbox"
-                        name="benefitToSSU"
-                        checked={formData.benefitToSSU}
-                        onChange={handleChange}
-                        className="form-checkbox"
-                    />
-                    <span className="ml-2">Benefit to SSU</span>
-                </label>
-            </div>
 
-            {/* Benefit Details - Conditionally rendered based on the state of Benefit to SSU */}
+
+            {/* Benefit Details*/}
             {
-                formData.benefitToSSU &&
                 <div className="mb-4">
                     <label htmlFor="benefitDetails" className="block mb-2">Benefit Details</label>
                     <textarea
@@ -326,6 +301,7 @@ const Form = () => {
                 <label className="inline-flex items-center">
                     <input
                         type="checkbox"
+                        id="remarksCheckbox"
                         name="remarks"
                         checked={formData.remarks}
                         onChange={handleChange}
@@ -334,6 +310,7 @@ const Form = () => {
                     <span className="ml-2">I agree to the terms and conditions</span>
                 </label>
             </div>
+
 
             {/* Submit Button */}
             <div className="mb-4">

@@ -17,7 +17,7 @@ const createForm = async (req, res) => {
             keyAttendees,
             totalAttendees,
             dateOfRequest,
-            benefitToSSU,
+            benefitDetails,
             venue,
             budget,
             netRevenue,
@@ -48,7 +48,7 @@ const createForm = async (req, res) => {
             keyAttendees,
             totalAttendees,
             dateOfRequest,
-            benefitToSSU,
+            benefitDetails,
             venue,
             budget,
             netRevenue,
@@ -79,7 +79,7 @@ const getEventDetails = async (req, res) => {
 
         const email = req.params.email;
 
-        const eventDetails = await Form.findOne({ eventOrganizerEmail: email }).sort({ createdAt: -1 }).exec();
+        const eventDetails = await Form.find({ eventOrganizerEmail: email }).sort({ createdAt: -1 }).exec();
 
         if (!eventDetails) {
 

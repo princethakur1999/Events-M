@@ -14,11 +14,11 @@ function Edit({ formId }) {
 
         try {
 
-            const response = await axios.get(`https://ssu-iqac-backend.onrender.com/edit/${formId}`);
+            const response = await axios.get(`http://localhost:8000/edit/${formId}`);
 
             if (response.data && response.data.success) {
 
-                setEventData(response.data.form); // Assuming the form data is available in response.data.form
+                setEventData(response.data.form);
 
             } else {
 
@@ -53,20 +53,18 @@ function Edit({ formId }) {
 
         try {
 
-            const response = await axios.put(`${BASE_URL}/update/${formId}`, eventData);
+            const response = await axios.put(`http://localhost:8000/update/${formId}`, eventData);
 
             if (response.data && response.data.success) {
 
-                alert("Form updated successfully.")
+                alert('Form updated successfully.');
 
-                const emailResponse = await axios.get(`${BASE_URL}/sendemail/${formId}`);
+                const emailResponse = await axios.get(`http://localhost:8000/sendemail/${formId}`);
 
                 if (emailResponse.data && emailResponse.data.success) {
 
                     navigate('/');
                 }
-
-
             } else {
 
                 alert(response.data.message);
@@ -77,7 +75,6 @@ function Edit({ formId }) {
             console.log('Error updating form: ', error);
         }
     };
-
 
     if (!eventData) {
 
@@ -98,20 +95,38 @@ function Edit({ formId }) {
                         <div key={key} className="mb-4">
 
                             <label htmlFor={key} className="block text-gray-700 font-bold mb-2">
-                                {key.charAt(0).toUpperCase() + key.slice(1)}
+                                {key.charAt(0).toUpperCase() + key.slice(1).replace(/([a-z])([A-Z])/g, '$1 $2')}
                             </label>
 
-                            <input
-                                type="text"
-                                id={key}
-                                name={key}
-                                value={eventData ? eventData[key] || '' : ''}
-                                onChange={handleDataChange}
-                                className="w-full bg-gray-200 rounded p-2"
-                            />
+                            {
+                                key === 'status' ?
+                                    (
+                                        <select
+                                            id={key}
+                                            name={key}
+                                            value={eventData ? eventData[key] || '' : ''}
+                                            onChange={handleDataChange}
+                                            className="w-full bg-gray-200 rounded p-2"
+                                        >
+                                            <option value="Pending">Pending</option>
+                                            <option value="Approved">Approved</option>
+                                            <option value="Cancelled">Cancelled</option>
+                                        </select>
+                                    )
+                                    :
+                                    (
+                                        <input
+                                            type="text"
+                                            id={key}
+                                            name={key}
+                                            value={eventData ? eventData[key] || '' : ''}
+                                            onChange={handleDataChange}
+                                            className="w-full bg-gray-200 rounded p-2"
+                                        />
+                                    )
+                            }
                         </div>
-                    ))
-            }
+                    ))}
             <button onClick={handleEdit} className="bg-rose-700 text-white px-4 py-2 rounded mt-4">
                 Update
             </button>
