@@ -5,6 +5,7 @@ import { setUserToken } from '../slices/authSlice';
 import { setAdminToken } from '../slices/adminSlice';
 import { useNavigate } from 'react-router-dom';
 import { AiFillHome } from 'react-icons/ai';
+
 function Navigation() {
 
     const navigate = useNavigate();
@@ -43,7 +44,7 @@ function Navigation() {
             <div className="container mx-auto flex justify-between items-center">
 
                 <Link to="/" className="text-white text-2xl font-bold hidden  sm:hidden md:inline">
-                    IQAC
+                    SSU
                 </Link>
 
                 <ul className="flex space-x-4 justify-center items-center">

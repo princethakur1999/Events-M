@@ -74,7 +74,10 @@ const getAllForms = async (req, res) => {
 
         const forms = await Form.find();
 
-        console.log(forms.length);
+        console.log("FORMS: " + forms);
+
+        console.log("Forms Length: " + forms.length);
+
 
         res.status(200).json({
 

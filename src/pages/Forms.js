@@ -171,7 +171,7 @@ function Forms() {
                                             <Document>
                                                 <Page style={styles.page}>
                                                     <View style={styles.section}>
-                                                        <Text style={styles.header}>IQAC Event Form</Text>
+                                                        <Text style={styles.header}>Event Form</Text>
 
                                                         {
                                                             Object.entries(selectedForm).map(([key, value]) => {

@@ -79,17 +79,18 @@ const getEventDetails = async (req, res) => {
 
         const email = req.params.email;
 
-        const eventDetails = await Form.find({ eventOrganizerEmail: email }).sort({ createdAt: -1 }).exec();
+        const eventDetails = await Form.findOne({ eventOrganizerEmail: email }).sort({ createdAt: -1 }).exec();
 
         if (!eventDetails) {
 
             return res.status(404).json({
+
                 success: false,
                 message: 'Event details not found'
             });
         }
 
-        console.log(eventDetails); // Log the event details (for debugging purposes)
+        console.log("MERA DETAILS: " + eventDetails); // Log the event details (for debugging purposes)
 
         return res.status(200).json({
 

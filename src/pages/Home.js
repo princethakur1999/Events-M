@@ -16,11 +16,8 @@ const Home = () => {
             {/* Hero Section */}
             <div className="bg-rose-900  text-center py-16 flex flex-col justify-center items-center">
                 <h1 className="text-4xl font-semibold p-4 mb-4 bg-white text-rose-900 rounded-full">
-                    Welcome to IQAC
+                    SSU Event Manager
                 </h1>
-                <p className="text-lg text-white">
-                    Ensuring Quality in Higher Education
-                </p>
             </div>
 
             {/* Gallery Section */}
@@ -90,7 +87,7 @@ const Home = () => {
             <div className="container mx-auto py-16 px-1">
 
                 <h2 className="text-3xl font-semibold text-center text-rose-900 mb-8">
-                    IQAC Members
+                    Project Members
                 </h2>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
@@ -105,9 +102,9 @@ const Home = () => {
                             >
                                 <img src={getRandomImageURL()} alt="Department 1" className="w-full h-48 object-cover" />
                                 <div className="p-4">
-                                    <h3 className="text-xl font-semibold mb-2 text-rose-900">Member 1</h3>
+                                    <h3 className="text-xl font-semibold mb-2 text-rose-900">Sayantan Manna</h3>
                                     <p className="text-gray-600">
-                                        Post Description
+                                        Frontend Designer
                                     </p>
                                 </div>
                             </div>
@@ -125,9 +122,9 @@ const Home = () => {
                             >
                                 <img src={getRandomImageURL()} alt="Department 2" className="w-full h-48 object-cover" />
                                 <div className="p-4">
-                                    <h3 className="text-xl font-semibold mb-2 text-rose-900">Member 2</h3>
+                                    <h3 className="text-xl font-semibold mb-2 text-rose-900">Pallavi</h3>
                                     <p className="text-gray-600">
-                                        Post Description
+                                        Frontend Developer
                                     </p>
                                 </div>
                             </div>
@@ -145,9 +142,9 @@ const Home = () => {
                             >
                                 <img src={getRandomImageURL()} alt="Department 3" className="w-full h-48 object-cover" />
                                 <div className="p-4">
-                                    <h3 className="text-xl font-semibold mb-2 text-rose-900">Member 3</h3>
+                                    <h3 className="text-xl font-semibold mb-2 text-rose-900">Krushna Konkane</h3>
                                     <p className="text-gray-600">
-                                        Post Description
+                                        Frontend Developer
                                     </p>
                                 </div>
                             </div>
@@ -165,9 +162,9 @@ const Home = () => {
                             >
                                 <img src={getRandomImageURL()} alt="Department 4" className="w-full h-48 object-cover" />
                                 <div className="p-4">
-                                    <h3 className="text-xl font-semibold mb-2 text-rose-900">Member 4</h3>
+                                    <h3 className="text-xl font-semibold mb-2 text-rose-900">Prince Thakur</h3>
                                     <p className="text-gray-600">
-                                        Post Description
+                                        Backend Developer
                                     </p>
                                 </div>
                             </div>
